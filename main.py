@@ -26,9 +26,7 @@ def input_prompt():
 def select_prompt(options):
     length = 0
     
-    while True:
-        # 콘솔 화면을 지우는 명령어 (Windows 기준)
-        subprocess.run("cls", shell=True) 
+    while True :
 
         # OPTIONS 딕셔너리에 있는 옵션들을 출력하는 함수 호출
         ui.intro_option()
