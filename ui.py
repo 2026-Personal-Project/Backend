@@ -16,6 +16,7 @@ def menu() :
         #"  > 3.Exit the program.                   " + "|\n" 
     
 def intro_option():
-        print("Available options : ")
+        print("Available options : \n")
         for key in OPTIONS:
             print(" - ", key)
+        print ("\n")
