@@ -1,13 +1,25 @@
+# msvcrt 헤더 참조
+import msvcrt
 # OPTIONS 딕셔너리 참조
 from options import OPTIONS
 
 # 프롬프트 빌더 프로그램 안내 문구를 출력하는 함수
-def introduce() :
+def menu() :
     print (
-        "Hello! Welcome to the Prompt_Builder.\n" +
-        "Try selecting options directly to make the prompt more precise."
+        "|"+" Hello! Welcome to the Prompt_Builder.  " + "|\n" +
+        "|"+" Try selecting options directly to make " + "|\n" +
+        "|"+" the prompt more precise.               " + "|\n\n" +
+        "|"+" Select Menu with number 1,2,3          " + "|\n" +
+        "  > 1.Add options to existing prompts.    " + "|\n" +
+        "  > 2.Build prompts with Tag.             " + "|\n" +
+        "  > 3.Exit the program.                   " + "|\n" 
+
     )
 
-    print("Available options : ")
-    for key in OPTIONS:
-        print(" - ", key)
+
+def select_menu() :
+    
+def intro_option():
+        print("Available options : ")
+        for key in OPTIONS:
+            print(" - ", key)
