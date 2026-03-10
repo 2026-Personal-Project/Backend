@@ -8,16 +8,12 @@ def menu() :
     print (
         "|"+" Hello! Welcome to the Prompt_Builder.  " + "|\n" +
         "|"+" Try selecting options directly to make " + "|\n" +
-        "|"+" the prompt more precise.               " + "|\n\n" +
-        "|"+" Select Menu with number 1,2,3          " + "|\n" +
-        "  > 1.Add options to existing prompts.    " + "|\n" +
-        "  > 2.Build prompts with Tag.             " + "|\n" +
-        "  > 3.Exit the program.                   " + "|\n" 
-
+        "|"+" the prompt more precise.               " + "|\n\n" 
     )
-
-
-def select_menu() :
+     #"|"+" Select Menu with number 1,2,3          " + "|\n" +
+        #"  > 1.Add options to existing prompts.    " + "|\n" +
+        #"  > 2.Build prompts with Tag.             " + "|\n" +
+        #"  > 3.Exit the program.                   " + "|\n" 
     
 def intro_option():
         print("Available options : ")
