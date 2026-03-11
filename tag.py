@@ -1,2 +1,0 @@
-# Tag management module
-

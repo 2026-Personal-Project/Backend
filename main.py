@@ -1,93 +1,37 @@
-# ui 파일 참조
-import ui
+# 프롬프트 타입 선택 함수 참조
+from Select_type import select_type
 
-# OS 모듈과 subprocess 모듈 참조
-import subprocess
+#프롬프트 입력 함수 참조
+from Input_prompt import input_prompt
+
+# 옵션 선택 함수 참조
+from Select_prompt import select_prompt
+
+# 프롬프트 빌더 함수 참조
+from Builder_prompt import builder_prompt
 
 # OPTIONS 딕셔너리 참조
 from options import OPTIONS
 
-# 프롬프트 최대 글자 수 제한 (1500자)
-MAX_LENGTH = 1500
-
-
-# 기본 프롬프트를 입력받는 함수 (글자 수 제한 적용)
-def input_prompt():
-    while True:
-        prompt = input("Input your base prompt : ")
-        if len(prompt) > MAX_LENGTH:
-            print("프롬프트 글자 수 제한을 초과했습니다. 다시 입력해주세요.\n")
-            continue
-        break
-    return prompt
-
-
-# 옵션을 선택하는 함수 (이미지 타입에서만 호출)
-def select_prompt(options):
-    length = 0
-
-    # 무한 루프 방지용 초기값, 실제로는 사용자 입력을 받아야 함
-    value = "default" 
-
-    while True :
-        # 콘솔 화면을 지우는 명령어 (Windows 기준)
-        subprocess.run("cls", shell=True)  
-        
-         # OPTIONS 딕셔너리에 있는 옵션들을 출력하는 함수 호출
-        ui.intro_option()
-
-         # OPTIONS 딕셔너리에 존재하지 않는 값일 경우 예외 처리
-        if value not in OPTIONS and value not in ("exit", "stop"):
-            # 첫번째 루프에 대해서는 
-            if value != "default" :
-                print("유효하지 않은 옵션입니다. 다시 입력해주세요.\n\n")
-                if value != "return" :
-                    value = "return"
-                    continue
-        
-        print("옵션 선택을 중단하려면 'stop' 또는 'exit'를 입력하세요.")
-        value = input("Select the options : ")
-
-        # 종료 명령어 입력 시 반복 종료
-        if value == "exit" or value == "stop":
-            break
-
-        # 유효한 옵션일 경우 리스트에 추가
-        options.append(value)
-        length += 1
-
-    return length
-
-
-# 선택한 옵션을 기본 프롬프트에 추가하는 함수
-def builder_prompt(base, options):
-    prompt = base
-
-    for opt in options:
-        # 안전성을 위해 OPTIONS 존재 여부 재확인
-        if opt in OPTIONS:
-            prompt += ", " + OPTIONS[opt]
-
-    return prompt
-
-
-# 프롬프트 타입(일반/이미지)을 선택하는 함수
-
-def select_type():
-    while True:
-        value = input("Choose prompt type ('general' or 'image'): ").strip().lower()
-        if value in ("general", "image"):
-            return value
-        print("잘못된 입력입니다. 'general' 또는 'image'를 입력해주세요.")
-
+# 프롬프트 빌더 프로그램 안내 문구를 출력하는 함수
+def menu() :
+    print (
+        "|"+" Hello! Welcome to the Prompt_Builder.  " + "|\n" +
+        "|"+" Try selecting options directly to make " + "|\n" +
+        "|"+" the prompt more precise.               " + "|\n\n" 
+    )
+    #"|"+" Select Menu with number 1,2,3          " + "|\n" +
+        #"  > 1.Add options to existing prompts.    " + "|\n" +
+        #"  > 2.Build prompts with Tag.             " + "|\n" +
+        #"  > 3.Exit the program.                   " + "|\n" 
+    print("프롬프트를 사용하는 목적을 입력해 주세요(ex : flower)")
 
 # 프로그램 실행 함수
 def execution():
     options = []
 
-    ui.menu()  # 초기 메뉴 출력
+    menu()  # 초기 메뉴 출력
     prompt = input_prompt()
-    print("일반과 이미지 중 사용하시려는 타입을 선택 해 주세요")
     prompt_type = select_type()
 
     if prompt_type == "image":
