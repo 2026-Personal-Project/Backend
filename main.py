@@ -22,7 +22,7 @@ def input_prompt():
     return prompt
 
 
-# 옵션을 선택하는 함수
+# 옵션을 선택하는 함수 (이미지 타입에서만 호출)
 def select_prompt(options):
     length = 0
 
@@ -71,14 +71,32 @@ def builder_prompt(base, options):
     return prompt
 
 
+# 프롬프트 타입(일반/이미지)을 선택하는 함수
+
+def select_type():
+    while True:
+        value = input("Choose prompt type ('general' or 'image'): ").strip().lower()
+        if value in ("general", "image"):
+            return value
+        print("잘못된 입력입니다. 'general' 또는 'image'를 입력해주세요.")
+
+
 # 프로그램 실행 함수
 def execution():
     options = []
 
-    ui.menu()  # ui 파일의 introduce 함수 호출
+    ui.menu()  # 초기 메뉴 출력
     prompt = input_prompt()
-    options_len = select_prompt(options)
-    print(builder_prompt(prompt, options))
+    print("일반과 이미지 중 사용하시려는 타입을 선택 해 주세요")
+    prompt_type = select_type()
+
+    if prompt_type == "image":
+        # 이미지일 때만 태그(옵션) 선택
+        options_len = select_prompt(options)
+        print(builder_prompt(prompt, options))
+    else:
+        # 일반 텍스트 프롬프트는 옵션 없이 그대로
+        print(prompt)
 
 
 # 다른 파일에서 import 될 때 자동 실행을 방지하기 위한 조건문
