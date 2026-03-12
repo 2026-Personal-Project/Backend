@@ -1,0 +1,4 @@
+사용하는 법
+uvicorn test_flask:app --reload
+를 .venv 환경에서 실행하면 됨
+그 후 터미널에 보이는 주소를 웹 브라우저에 입력 후 접속하면 됨
