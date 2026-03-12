@@ -1,13 +1,16 @@
 import subprocess
-from options import OPTIONS
-from Intro_option import intro_option
+from List_Option import OPTIONS
+from Show_Option import intro_option
+
 def select_prompt(options):
-    value_length = 0
+
     value = "default" 
 
     while True :
         subprocess.run("cls", shell=True)  
+
         intro_option()
+
         if value not in OPTIONS and value not in ("exit", "stop"):
             if value != "default" :
                 print("유효하지 않은 옵션입니다. 다시 입력해주세요.\n\n")
@@ -22,7 +25,6 @@ def select_prompt(options):
             break
 
         options.append(value)
-        value_length += 1
 
-    return value_length
+    return options
 

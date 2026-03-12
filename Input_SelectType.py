@@ -1,3 +1,5 @@
+MAX_LENGTH = 1500 # 프롬프트 최대 글자 수 제한 (1500자)
+
 def select_type():
     print("일반과 이미지 중 사용하시려는 타입을 선택 해 주세요")
     while True:
